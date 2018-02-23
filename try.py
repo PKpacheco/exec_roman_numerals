@@ -16,13 +16,14 @@ def roman_to_int(numero_romano):
     for letra in numero_romano:
         if letra in valores:
             valor_atual = valores[letra]
+        
+            if valor_anterior >= valor_atual:
+                resultado += valor_atual
+            else:
+                resultado += valor_atual - (2 * valor_anterior)
+            valor_anterior = valor_atual
         else:
-            print 'Valor invalido:', letra
-        if valor_anterior >= valor_atual:
-            resultado += valor_atual
-        else:
-            resultado += valor_atual - (2 * valor_anterior)
-        valor_anterior = valor_atual
+            print 'Valor invalido:'
     return resultado
 numero_romano = raw_input("Numero Romano: ").upper()
 print "Numero Inteiro:", roman_to_int(numero_romano)
