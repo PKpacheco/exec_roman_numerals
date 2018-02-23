@@ -1,25 +1,28 @@
-#!/usr/bin/python
-
-
-def roma_to_int(num):
-    roma = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
-    romano = num[0].upper()
-    letras = list(romano)
+def roman_to_int(numero_romano):
     resultado = 0
-    anterior = 0
-    for letra in letras:
-        if letra in roma:
-            if roma[letra] > anterior:
-                resultado = resultado - anterior * 2
-                resultado = resultado + roma[letra]
-            else:
-                resultado = resultado + roma[letra]
-            anterior = roma[letra]
+
+    valores = {
+        'M' : 1000,
+        'D' : 500,
+        'C' : 100,
+        'L' : 50,
+        'X' : 10,
+        'V' : 5,
+        'I' : 1
+    }
+
+    if len(numero_romano) > 0:
+        valor_anterior = numero_romano[0]
+    for letra in numero_romano:
+        if letra in valores:
+            valor_atual = valores[letra]
         else:
-            print 'Letras desconocidas'
-    print resultado
-
-
-if __name__ == '__main__':
-    num = raw_input(str("Entre com numero romano: "))
-    roma_to_int(num)
+            print 'Valor invalido:', letra
+        if valor_anterior >= valor_atual:
+            resultado += valor_atual
+        else:
+            resultado += valor_atual - (2 * valor_anterior)
+        valor_anterior = valor_atual
+    return resultado
+numero_romano = raw_input("Numero Romano: ").upper()
+print "Numero Inteiro:", roman_to_int(numero_romano)
