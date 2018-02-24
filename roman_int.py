@@ -1,3 +1,6 @@
+def get_roman_letter()
+    return str(input("Input roman number: ").upper())
+
 def roman_to_int(roman_number):
     result = 0
 
@@ -11,18 +14,15 @@ def roman_to_int(roman_number):
         if letter in values:
             actual_value = values[letter]
         
-            if previous_value >= actual_value:
+            if str(previous_value) >= str(actual_value):
                 result += actual_value
             else:
                 result += actual_value - (2 * previous_value)
             previous_value = actual_value
         else:
-            print 'Valor invalido:'
+            print("Invalid value: ")
+
     return result
 
 if __name__ == '__main__':
-    roman_number = raw_input("Input roman number: ").upper()
-    if not (roman_number is values):
-        print(" Erro ")
-    else: 
-         print "Integer number is:", roman_to_int(roman_number)
+    print ("Integer number is:", roman_to_int(roman_number))
