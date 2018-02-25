@@ -1,5 +1,10 @@
 import logging
 
+UNIT = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+DOZENS = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+HUNDREDS = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
+THOUSANDS = ["", "M", "MM", "MMM"]
+    
 class RomanInvalidRange(Exception):
     pass
 
@@ -14,11 +19,6 @@ def value_validation(num):
 
 
 def int_to_roman(num):
-    Unit = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
-    Dozens = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
-    Hundreds = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"]
-    Thousands = ["", "M", "MM", "MMM"]
-
     u = num % 10
     d = int(num / 10) % 10
     h = int(num / 100) % 10
@@ -26,21 +26,21 @@ def int_to_roman(num):
     number = 0
 
     if (num >= 1000):
-        number = (Thousands[t] + Hundreds[h] + Dozens[d] + Unit[u])
+        number = (THOUSANDS[t] + HUNDREDS[h] + DOZENS[d] + UNIT[u])
     elif (num >= 100):
-        number = (Hundreds[h] + Dozens[d] + Unit[u])
+        number = (HUNDREDS[h] + DOZENS[d] + UNIT[u])
     elif (num >= 10):
-        number = (Dozens[d] + Unit[u])
+        number = (DOZENS[d] + UNIT[u])
     else:
-        number = (Unit[num])
-    return(number)
+        number = (UNIT[num])
+    return number
 
 
 if __name__ == '__main__':
     try:
         num = get_num()
         value_validation(num)
-        print(int_to_roman(num))
+        print("Roman is :" ,int_to_roman(num))
         code = 0
     except (ValueError, RomanInvalidRange) as exp:
         logging.error(exp)

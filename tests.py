@@ -7,7 +7,7 @@ from unittest import mock
 
 class TestIntToRoman(unittest.TestCase):
 
-    def test_input_ok(self):
+    def test_input_ok_is_number(self):
         with mock.patch('builtins.input', return_value=1):
             self.assertEqual(get_num(), 1)
 
@@ -44,9 +44,25 @@ class TestIntToRoman(unittest.TestCase):
 
 
 class TestRomanToInt(unittest.TestCase):
-    # def test_is_ok(self):
-    #     result = roman_to_int("")
-    #     self.assertEqual(result, 10)
+ 
+    def test_input_is_letter(self):
+        with mock.patch('builtins.input', return_value='a'):
+            self.assertEqual(get_roman_letter(), 'a')
+
+    def test_input_fail_when_set_number(self):
+        with mock.patch('builtins.input', return_value=1):
+            with self.assertRaises(Exception):
+                letter_validation()
+
+    def test_input_fail_when_set_invalid_roman(self):
+        with mock.patch('builtins.input', return_value='Z'):
+            with self.assertRaises(Exception):
+                letter_validation()
+
+
+    # def test_roman_to_decimal_lowercase(self):
+    #     result = roman_to_int("c")
+    #     self.assertEqual(result, 100)
 
     def test_roman_to_decimal_unity(self):
         result = roman_to_int("I")
