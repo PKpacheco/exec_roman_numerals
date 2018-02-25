@@ -1,4 +1,6 @@
-.vscode
-myenv
+*.vscode
+*.pyc
 __pycache__
-.pyc
+myenv
+db.sqlite3
+.DS_Store
