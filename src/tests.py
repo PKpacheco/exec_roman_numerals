@@ -59,11 +59,6 @@ class TestRomanToInt(unittest.TestCase):
             with self.assertRaises(Exception):
                 letter_validation()
 
-
-    # def test_roman_to_decimal_lowercase(self):
-    #     result = roman_to_int("c")
-    #     self.assertEqual(result, 100)
-
     def test_roman_to_decimal_unity(self):
         result = roman_to_int("I")
         self.assertEqual(result, 1)
