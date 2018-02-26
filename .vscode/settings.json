@@ -1,4 +1,4 @@
 {
     "python.linting.enabled": false,
-    "python.pythonPath": "${workspaceFolder}/myenv/bin/python3"
+    "python.pythonPath": "/Users/ppacheco/.virtualenvs/venv3/bin/python3.6"
 }
