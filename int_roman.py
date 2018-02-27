@@ -42,7 +42,6 @@ if __name__ == '__main__':
         num = get_num()
         value_validation(num)
         print("Roman is :", int_to_roman(num))
-        code = 0
     except (ValueError, RomanInvalidRange) as exp:
         logging.error(exp)
     except Exception as exp:
